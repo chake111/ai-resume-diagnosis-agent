@@ -25,6 +25,10 @@ AI 简历诊断 Agent｜Python / Streamlit / LLM API
 - 接入兼容 OpenAI SDK 的大模型 API，实现简历评分、核心问题识别和修改建议生成
 - 设计 API Key 缺失检测与异常处理逻辑，提升应用稳定性和可用性
 
+## 面试介绍
+
+这是一个面向 AI Agent / 大模型应用开发实习岗位的简历诊断 Agent。我使用 Streamlit 构建 Web 交互界面，接入兼容 OpenAI SDK 的大模型 API，根据用户输入的目标岗位和简历内容，生成简历评分、核心问题和修改建议。同时我加入了 API Key 检测、异常处理和样例简历读取，保证项目可以稳定演示。
+
 ## 运行方法
 
 ```bash
