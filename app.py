@@ -54,6 +54,15 @@ def diagnose_resume(resume_text, target_role):
 
 st.title("AI 简历诊断 Agent")
 
+st.set_page_config(
+    page_title = "AI 简历诊断 Agent",
+    page_icon = "📄",
+    layout = "centered",
+)
+
+st.caption("快速针对优化JD给出优化方案")
+st.divider()
+
 sample_resume = ""
 
 if os.path.exists("sample_resume.txt"):
