@@ -17,6 +17,10 @@
 - 对 API Key 缺失和调用失败进行异常处理
 - 输出评分、核心问题和修改建议，便于用户快速优化简历
 
+## 运行截图
+
+![应用运行截图](screenshot.png)
+
 ## 简历写法
 
 AI 简历诊断 Agent｜Python / Streamlit / LLM API
@@ -35,3 +39,4 @@ AI 简历诊断 Agent｜Python / Streamlit / LLM API
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
