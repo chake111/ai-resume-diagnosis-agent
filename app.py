@@ -5,7 +5,7 @@ from openai import OpenAI
 api_key = os.getenv("DEEPSEEK_API_KEY")
 
 
-def diagnose_resume(resume_text, target_role):
+def diagnose_resume(resume_content, target_post):
     if not api_key:
         return "未检测到 DEEPSEEK_API_KEY，请先配置环境变量。"
     client = OpenAI(
@@ -14,14 +14,14 @@ def diagnose_resume(resume_text, target_role):
     )
     prompt = f"""
     你是诊断简历 Agent。
-    目标岗位: {target_role}
+    目标岗位: {target_post}
     
     请诊断下面的简历，输出：
     1.简历评分（0-100）
     2.3条最重要的修改简历
     
     简历内容：
-    {resume_text}
+    {resume_content}
     
     请严格按以下格式输出：
 
