@@ -22,7 +22,7 @@
 ![应用运行截图](screenshot.png)
 
 ## 简历写法
-
+、
 AI 简历诊断 Agent｜Python / Streamlit / LLM API
 
 - 基于 Streamlit 构建交互式简历诊断页面，支持目标岗位输入和简历文本分析
@@ -39,4 +39,11 @@ AI 简历诊断 Agent｜Python / Streamlit / LLM API
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+## 后续计划
+
+- 支持 PDF / DOCX 简历文件上传与解析
+- 引入岗位知识库检索，提升诊断建议的针对性
+- 增加多轮对话能力，支持用户根据建议继续修改简历
+- 增加历史诊断记录，便于对比不同版本简历
 
