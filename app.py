@@ -1,8 +1,9 @@
+import uuid
+
 import streamlit as st
 import os
 from openai import OpenAI
-from database import init_db
-
+from database import init_db, save_diagnosis
 
 init_db()
 api_key = os.getenv("DEEPSEEK_API_KEY")
@@ -54,13 +55,12 @@ def diagnose_resume(resume_content, target_post):
     return response.choices[0].message.content
 
 
-
 st.title("AI 简历诊断 Agent")
 
 st.set_page_config(
-    page_title = "AI 简历诊断 Agent",
-    page_icon = "📄",
-    layout = "centered",
+    page_title="AI 简历诊断 Agent",
+    page_icon="📄",
+    layout="centered",
 )
 
 st.caption("快速针对优化JD给出优化方案")
@@ -72,7 +72,6 @@ if os.path.exists("sample_resume.txt"):
     with open("sample_resume.txt", "r", encoding="utf-8") as file:
         sample_resume = file.read()
 
-
 target_role = st.text_input("目标岗位", value="AI Agent 开发实习生")
 
 if "resume_input" not in st.session_state:
@@ -81,7 +80,7 @@ if "resume_input" not in st.session_state:
 if st.button("清空"):
     st.session_state.resume_input = ""
 
-resume_text = st.text_area("粘贴你的简历内容",key = "resume_input", height=300)
+resume_text = st.text_area("粘贴你的简历内容", key="resume_input", height=300)
 
 if st.button("开始诊断"):
     if not resume_text.strip():
@@ -90,4 +89,6 @@ if st.button("开始诊断"):
         st.subheader("诊断结果")
         with st.spinner("AI 正在诊断简历..."):
             result = diagnose_resume(resume_text, target_role)
+            save_diagnosis(1, uuid.UUID, target_role,
+                           resume_text, result)
         st.write(result)
