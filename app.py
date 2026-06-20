@@ -3,7 +3,7 @@ import uuid
 import streamlit as st
 import os
 from openai import OpenAI
-from database import init_db, save_diagnosis
+from database import init_db, save_diagnosis, get_recent_diagnoses
 
 init_db()
 api_key = os.getenv("DEEPSEEK_API_KEY")
@@ -92,3 +92,9 @@ if st.button("开始诊断"):
             save_diagnosis(1, "default_session", target_role,
                            resume_text, result)
         st.write(result)
+
+st.subheader("历史记录")
+
+for row in get_recent_diagnoses(5):
+    with st.expander(f"{row[3]} | {row[6][:19]}"):
+        st.write(row[5])
