@@ -1,0 +1,3 @@
+AI Agent 开发实习生
+核心技能：Python、LLM API、Prompt、RAG、向量检索、工具调用、Git。
+项目要求：说明业务问题、技术方案、个人贡献和量化结果。
