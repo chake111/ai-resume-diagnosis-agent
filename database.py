@@ -27,3 +27,19 @@ def save_diagnosis(user_id, session_id, role, resume, result):
                      VALUES (?, ?, ?, ?, ?, ?)
                      """, (user_id, session_id, role, resume, result,
                            datetime.now().isoformat()))
+
+
+def get_recent_diagnoses(limit=10):
+    with sqlite3.connect("resume_agent.db") as conn:
+        return conn.execute("""
+                     SELECT id,
+                            user_id,
+                            session_id,
+                            target_role,
+                            resume_text,
+                            diagnosis_result,
+                            created_at
+                     FROM diagnosis_history
+                     ORDER BY id DESC
+                     LIMIT ?
+                     """, (limit,)).fetchall()
