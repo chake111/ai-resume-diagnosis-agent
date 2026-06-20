@@ -1,7 +1,10 @@
 import streamlit as st
 import os
 from openai import OpenAI
+from database import init_db
 
+
+init_db()
 api_key = os.getenv("DEEPSEEK_API_KEY")
 
 
