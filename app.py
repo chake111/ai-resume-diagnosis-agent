@@ -89,9 +89,12 @@ if st.button("开始诊断"):
         st.subheader("诊断结果")
         with st.spinner("AI 正在诊断简历..."):
             result = diagnose_resume(resume_text, target_role)
-            save_diagnosis(1, "default_session", target_role,
-                           resume_text, result)
-        st.write(result)
+            if result.startswith(("未检测到", "AI Api 调用失败")):
+                st.error(result)
+            else:
+                save_diagnosis(1, "default_session", target_role,
+                               resume_text, result)
+                st.write(result)
 
 st.subheader("历史记录")
 
