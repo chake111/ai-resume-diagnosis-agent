@@ -1,9 +1,8 @@
-import uuid
-
 import streamlit as st
 import os
 from openai import OpenAI
 from database import init_db, save_diagnosis, get_recent_diagnoses
+from knowledge import retrieve_knowledge
 
 init_db()
 api_key = os.getenv("DEEPSEEK_API_KEY")
@@ -16,6 +15,9 @@ def diagnose_resume(resume_content, target_post):
         api_key=api_key,
         base_url="https://api.deepseek.com"
     )
+
+    knowledge = "\n".join(retrieve_knowledge(target_post))
+
     prompt = f"""
     你是诊断简历 Agent。
     目标岗位: {target_post}
@@ -26,6 +28,9 @@ def diagnose_resume(resume_content, target_post):
     
     简历内容：
     {resume_content}
+    
+    岗位参考知识：
+    {knowledge}
     
     请严格按以下格式输出：
 
