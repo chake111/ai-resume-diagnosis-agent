@@ -16,7 +16,7 @@ def diagnose_resume(resume_content, target_post):
         base_url="https://api.deepseek.com"
     )
 
-    knowledge = "\n".join(retrieve_knowledge(target_post))
+    knowledge = "\n".join(retrieve_knowledge(f"{target_post}{resume_content}"))
 
     prompt = f"""
     你是诊断简历 Agent。
