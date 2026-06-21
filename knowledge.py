@@ -10,3 +10,11 @@ def split_knowledge(text):
         for line in text.splitlines()
         if line.strip()
     ]
+
+def retrieve_knowledge(query):
+    chunks = split_knowledge(load_knowledge())
+    keywords = query.lower().split()
+    return [
+        chunk for chunk in chunks
+        if any(word in chunk.lower() for word in keywords)
+    ]
